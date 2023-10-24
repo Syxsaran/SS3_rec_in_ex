@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+import './styles.css';
 
 export default function Page() {
   const router = useRouter();
@@ -64,34 +65,38 @@ export default function Page() {
   };
 
   return (
-    <>
-      <h1>This is Signin Page</h1>
-      <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            name="username"
-            value={formValue.username}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="text"
-            name="password"
-            value={formValue.password}
-            onChange={handleChange}
-          />
-        </div>
-        <button className="btn btn-primary" type="submit">
-          Signin
-        </button>
-        <Link href="/signup">
-          <button className="btn btn-primary">Sign Up</button>
-        </Link>
+    <div className="login-page">
+      <h1 className="h1">This is Signin Page</h1>
+      <form className= "form" onSubmit={onSubmit}>
+          <div className="input-container">
+            <label htmlFor="username">Username</label>
+            <input
+              type="text"
+              name="username"
+              value={formValue.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="input-container">
+            <label htmlFor="password">Password</label>
+            <input
+              type="text"
+              name="password"
+              value={formValue.password}
+              onChange={handleChange}
+            />
+          </div>
+
+            <div className="button-container">
+              <button className="btn btn-primary" type="submit">
+                Signin
+              </button>
+              <Link href="/signup">
+                <button className="btn btn-primary">Sign Up</button>
+              </Link>
+            </div>
+
       </form>
-    </>
+    </div>
   );
 }

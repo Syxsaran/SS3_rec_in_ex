@@ -1,0 +1,43 @@
+input[type='text'],
+input[type='number'] {
+  border: 1px solid #ccc; /* Add a border */
+  border-radius: 4px; /* Add border radius */
+  box-shadow: 0 1px 1px rgb(144, 0, 255); /* Add a subtle shadow */
+  font-size: 16px;
+  padding: 10px;
+  width: 100%;
+}
+
+.input-container {
+    margin-bottom: 10px; /* ปรับระยะตามที่คุณต้องการ */
+    
+  }
+
+  
+.button-container {
+    display: flex; /* ให้ปุ่มอยู่ในแนวนอน */
+    gap: 10px; /* ปรับระยะห่างตามที่คุณต้องการ */
+    justify-content: center;
+}
+
+.h1 {
+  text-align: center;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+  
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
+}

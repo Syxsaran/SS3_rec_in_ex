@@ -16,12 +16,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           crossOrigin="anonymous"
         />
       </head>
-      <body className={inter.className}>
+      <body className={inter.className} >
         <Providers>
           <nav className="navbar bg-body-tertiary">
             <div className="container-fluid">
               <h1>
-                <span className="text-gradient">Record income and expenses</span>
+                <span className="text-gradient">บันทึกรายรับรายจ่าย</span>
               </h1>
               <div className="d-flex">
                 <SigninButton />

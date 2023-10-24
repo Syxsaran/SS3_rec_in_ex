@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesome
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import './styles.css';
 
 interface Transaction {
@@ -12,11 +13,22 @@ interface Transaction {
   amount: number;
 }
 
+
 const Page = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState(0);
   const [editingId, setEditingId] = useState<number | null>(null);
+
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  if (!session) {
+    // ถ้าไม่มีการเข้าสู่ระบบ ทำการ redirect ไปยังหน้าลงชื่อเข้าใช้
+    router.push("/signin");
+    return null; // คืนค่าเป็น null เพื่อไม่แสดงเนื้อหาของหน้า "main"
+  }
+
 
     // คำนวณยอดรวมรายรับ
   const calculateIncome = () => {

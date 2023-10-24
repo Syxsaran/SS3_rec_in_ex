@@ -13,13 +13,15 @@ const SigninButton = () => {
 
   const handleSignout = async () => {
     await signOut();
-    router.push("/page"); // Redirect to the desired page after signing out
+    router.push("/signout"); // Redirect to the desired page after signing out
   };
 
   if (session && session.user) {
     return (
       <>
-        <p>{session.user.name}</p>
+
+          <p>{session.user.name}</p>
+
         <button className="btn btn-danger" onClick={handleSignout}>
           SignOut
         </button>

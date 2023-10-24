@@ -12,16 +12,22 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+
+
 .container {
-  display: flex;
   justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
+  align-items: center; /* จัดตำแหน่งกลางแนวตั้ง */
+  height: 80vh;
+  background-color: #ffffff; /* เปลี่ยนสีพื้นหลังตามที่คุณต้องการ */
 }
 
-.centered-text {
+.centeredH {
   text-align: center;
+  font-size: 70px; /* เปลี่ยนขนาดตัวอักษรตามที่คุณต้องการ */
+  color: #333; /* เปลี่ยนสีข้อความตามที่คุณต้องการ */
 }
+
 
 
 .description {
