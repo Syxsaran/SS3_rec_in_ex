@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Import FontAwesome
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useSession } from 'next-auth/react';
@@ -24,9 +24,8 @@ const Page = () => {
   const router = useRouter();
 
   if (!session) {
-    // ถ้าไม่มีการเข้าสู่ระบบ ทำการ redirect ไปยังหน้าลงชื่อเข้าใช้
     router.push("/signin");
-    return null; // คืนค่าเป็น null เพื่อไม่แสดงเนื้อหาของหน้า "main"
+    return null;
   }
 
 
@@ -109,26 +108,6 @@ const Page = () => {
       <h1>บันทึกรายรับและรายจ่าย</h1>
 
       <div>
-      <input
-          type="text"
-          placeholder="รายละเอียด"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="จำนวนเงิน"
-          value={amount}
-          onChange={(e) => setAmount(Number(e.target.value))}
-        />
-        {editingId === null ? (
-          <h1><button className="btn btn-glow btn-gradient" onClick={addTransaction}>เพิ่ม</button></h1>
-        ) : (
-          <h1><button className="btn btn-glow btn-gradient" onClick={updateTransaction}>บันทึก</button></h1>
-        )}
-      </div>
-
-      <div>
         <h2>รายการ</h2>
         <table className="table table-bordered">
             <thead>
@@ -172,12 +151,33 @@ const Page = () => {
         <div>
           <h4>รายจ่าย</h4><span className="money minus">{calculateExpenses()} บาท</span>
         </div>
-      </div> 
-
+      </div>
+      
       <div className="inc-exp-container">          
         <div>
           <h4>ยอดรวม </h4><h5>{calculateBalance()} บาท</h5>
         </div>
+      </div>
+
+
+      <div>
+      <input
+          type="text"
+          placeholder="รายละเอียด"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="จำนวนเงิน"
+          value={amount}
+          onChange={(e) => setAmount(Number(e.target.value))}
+        />
+        {editingId === null ? (
+          <h1><button className="btn btn-glow btn-gradient" onClick={addTransaction}>เพิ่ม</button></h1>
+        ) : (
+          <h1><button className="btn btn-glow btn-gradient" onClick={updateTransaction}>บันทึก</button></h1>
+        )}
       </div>
     </div>
   );

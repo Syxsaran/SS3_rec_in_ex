@@ -19,12 +19,12 @@ const SigninButton = () => {
   if (session && session.user) {
     return (
       <>
+        <p style={{ margin: '10px', fontSize: '20px' }}>{session.user.name}</p>
 
-          <p>{session.user.name}</p>
-
-        <button className="btn btn-danger" onClick={handleSignout}>
+        <button className="btn btn-danger" onClick={handleSignout} style={{ margin: '10px' }}>
           SignOut
         </button>
+
       </>
     );
   }
