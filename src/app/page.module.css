@@ -12,7 +12,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-align: center;
-  font-size: 70px; /* เปลี่ยนขนาดตัวอักษรตามที่คุณต้องการ */
+  font-size: 70px;
   color: #333;
 }
 
@@ -20,15 +20,15 @@
 
 .container {
   justify-content: center;
-  align-items: center; /* จัดตำแหน่งกลางแนวตั้ง */
+  align-items: center;
   height: 80vh;
-  background-color: #ffffff; /* เปลี่ยนสีพื้นหลังตามที่คุณต้องการ */
+  background-color: #ffffff;
 }
 
 .centeredH {
   text-align: center;
-  font-size: 70px; /* เปลี่ยนขนาดตัวอักษรตามที่คุณต้องการ */
-  color: #333; /* เปลี่ยนสีข้อความตามที่คุณต้องการ */
+  font-size: 70px;
+  color: #333;
 }
 
 
@@ -133,7 +133,7 @@
 .logo {
   position: relative;
 }
-/* Enable hover only on non-touch devices */
+
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
     background: rgba(var(--card-rgb), 0.1);
@@ -151,7 +151,7 @@
   }
 }
 
-/* Mobile */
+
 @media (max-width: 700px) {
   .content {
     padding: 4rem;
@@ -228,7 +228,7 @@
   }
 }
 
-/* Tablet and Smaller Desktop */
+
 @media (min-width: 701px) and (max-width: 1120px) {
   .grid {
     grid-template-columns: repeat(2, 50%);

@@ -1,37 +1,37 @@
 "use client";
+//นำเข้า
 import React, { useState } from "react";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
-import './styles.css';
+import './styles.css'; 
 
-export default function SignupPage() {
-  const [formValue, setFormValue] = useState({
+export default function SignupPage() { // คอมโพนเนนต์ SignupPage
+  const [formValue, setFormValue] = useState({ //ค่าเริ่มต้น form เป็นว่าง
     username: "",
     password: "",
     name: "",
   });
-  const [signupSuccess, setSignupSuccess] = useState(false);
+  const [signupSuccess, setSignupSuccess] = useState(false); //ค่าเริ่มต้น
 
-  const handleChange = (event) => {
+  const handleChange = (event) => { // ฟังก์ชัน handleChange เปลี่ยนข้อมูลในฟอร์ม
     const { name, value } = event.target;
     setFormValue({ ...formValue, [name]: value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { // ฟังก์ชัน handleSubmit
     e.preventDefault();
 
     try {
-      const response = await fetch("/api/signup", {
+      const response = await fetch("/api/signup", { // ส่งคำขอ POST ไป "/api/signup"
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formValue),
+        body: JSON.stringify(formValue), // แปลงเป็น JSON
       });
 
-      if (response.ok) {
+      if (response.ok) { // ตรวจสอบ
         console.log("User created successfully");
-        setSignupSuccess(true);
+        setSignupSuccess(true); // สถานะสำเร็จ
       } else {
         const data = await response.json();
         if (data.error === "Username is already in use") {
@@ -45,14 +45,14 @@ export default function SignupPage() {
     }
   }
 
-
   return (
     <>
       <h1 className="h1">This is Signup Page</h1>
-      {signupSuccess ? (
+
+      {signupSuccess ? ( // ตรวจสอบสถานะการลงทะเบียนเพื่อแสดงข้อความเมื่อการลงทะเบียนเสร็จสมบูรณ์
         <p className="p">Signup successful! You can now sign in.</p>
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}> {/* ฟอร์มลงทะเบียน */}
           <div>
             <label htmlFor="username">Username</label>
             <input
@@ -82,15 +82,13 @@ export default function SignupPage() {
           </div>
 
           <div>
-            
             <button className="btn btn-primary" type="submit">
               Sign Up
             </button>
             <Link href="/signin">
-              <button className="btn btn-primary">Sign In</button>
+              <button className="btn btn-primary">Sign In</button> 
             </Link>
           </div>
-
         </form>
       )}
     </>

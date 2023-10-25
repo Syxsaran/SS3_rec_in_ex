@@ -1,4 +1,5 @@
 "use client";
+// นำเข้า
 import React, { useState, useEffect , useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
@@ -16,10 +17,10 @@ interface Transaction {
 
 
 const Page = () => {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [description, setDescription] = useState('');
-  const [amount, setAmount] = useState(0);
-  const [editingId, setEditingId] = useState<number | null>(null);
+  const [transactions, setTransactions] = useState<Transaction[]>([]); // transactions เก็บรายการรายรับรายจ่าย
+  const [description, setDescription] = useState(''); // description เก็บรายละเอียด
+  const [amount, setAmount] = useState(0); // amount , setAmount เก็บรายการรายรับรายจ่าย กำหนอดเป็น 0 
+  const [editingId, setEditingId] = useState<number | null>(null); // editingId , setEditingId เก็บ id รายการที่แก้ไข
 
   const { data: session } = useSession();
   const router = useRouter();
@@ -50,7 +51,7 @@ const Page = () => {
   };
 
 
-
+  // รายการรายรับรายจ่าย
   const addTransaction = async () => {
     if (description.trim() === '' || amount === 0) {
       return;
@@ -61,13 +62,12 @@ const Page = () => {
       description,
       amount,
     };
-    
 
     setTransactions([...transactions, newTransaction]);
     setDescription('');
     setAmount(0);
   };
-
+  // แก้ไขรายการ
   const editTransaction = (id: number) => {
     const transactionToEdit = transactions.find((transaction) => transaction.id === id);
 
@@ -92,14 +92,14 @@ const Page = () => {
     setAmount(0);
     setEditingId(null);
   };
-
+  // ลบรายการ
   const deleteTransaction = (id: number) => {
     const updatedTransactions = transactions.filter((transaction) => transaction.id !== id);
     setTransactions(updatedTransactions);
   };
 
   const [currencies, setCurrencies] = useState([]);
-
+  // api
   useEffect(() => {
     async function fetchCurrencies() {
       try {
@@ -120,10 +120,9 @@ const Page = () => {
 
   const tableRef = useRef(null);
 
-  const scrollToTable = () => {
+  const scrollToTable = () => {     
     if (tableRef.current) {
-      // ให้เลื่อนไปยังตาราง
-      tableRef.current.scrollIntoView({ behavior: "smooth" });
+      tableRef.current.scrollIntoView({ behavior: "smooth" });// ให้เลื่อนไปยังตาราง
     }
   };
 

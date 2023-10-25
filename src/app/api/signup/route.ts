@@ -1,6 +1,8 @@
+//นำเข้า
 import prisma from "@/lib/prisma";
 import * as bcrypt from "bcrypt";
-interface RequestBody {
+
+interface RequestBody { // คำขอ
   username: string;
   password: string;
   name: string;

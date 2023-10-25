@@ -1,24 +1,24 @@
-// C:\ปี\rec_in_ex\src\app\signout\page.tsx
 "use client";
+//นำเข้า
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { signOut } from "next-auth/react";
 
-export default function SignoutPage() {
-  const router = useRouter();
+export default function SignoutPage() { // คอมโพนเนนต์ SignoutPage
+  const router = useRouter(); // สร้าง router โดยใช้ useRouter สำหรับการนำทาง
 
-  useEffect(() => {
+  useEffect(() => { // ใช้ useEffect เพื่อรันโค้ด
     const handleSignout = async () => {
-      await signOut();
-      router.push("/app");
+      await signOut(); // ฟังก์ชัน
+      router.push("/app"); 
     };
 
-    handleSignout();
-  }, []);
+    handleSignout(); // เรียก handleSignout 
+  }, []); 
 
   return (
     <div>
-      <p>Signing out...</p>
+      <p>Signing out...</p> 
     </div>
   );
 }

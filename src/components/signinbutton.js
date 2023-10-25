@@ -1,19 +1,19 @@
-// SigninButton.tsx
 "use client";
+//นำเข้า
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-const SigninButton = () => {
-  const { data: session } = useSession();
-  const router = useRouter();
+const SigninButton = () => { // คอมโพนเนนต์ SigninButton
+  const { data: session } = useSession(); // ใช้ useSession เพื่อเข้าถึงข้อมูลเซสชันปัจจุบัน
+  const router = useRouter(); // ใช้ useRouter เพื่อนำทางแอปพลิเคชัน
 
   const handleSignin = () => {
     router.push("/signin");
   };
 
   const handleSignout = async () => {
-    await signOut();
-    router.push("/signout"); // Redirect to the desired page after signing out
+    await signOut(); // เรียกใช้ฟังก์ชัน
+    router.push("/signout");
   };
 
   if (session && session.user) {
@@ -24,7 +24,6 @@ const SigninButton = () => {
         <button className="btn btn-danger" onClick={handleSignout} style={{ margin: '10px' }}>
           SignOut
         </button>
-
       </>
     );
   }
@@ -38,4 +37,4 @@ const SigninButton = () => {
   );
 };
 
-export default SigninButton;
+export default SigninButton; // ส่งคอมโพนเนนต์ SigninButton

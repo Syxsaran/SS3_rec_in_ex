@@ -1,23 +1,23 @@
 input[type='text'],
 input[type='text'],
 input[type='password'] {
-  border: 1px solid #ccc; /* Add a border */
-  border-radius: 4px; /* Add border radius */
-  box-shadow: 0 1px 1px rgb(58, 1, 101); /* Add a subtle shadow */
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-shadow: 0 1px 1px rgb(58, 1, 101); 
   font-size: 16px;
   padding: 10px;
   width: 100%;
 }
 
 .input-container {
-    margin-bottom: 10px; /* ปรับระยะตามที่คุณต้องการ */
+    margin-bottom: 10px; 
     
   }
 
   
 .button-container {
-    display: flex; /* ให้ปุ่มอยู่ในแนวนอน */
-    gap: 10px; /* ปรับระยะห่างตามที่คุณต้องการ */
+    display: flex; 
+    gap: 10px; 
     justify-content: center;
 }
 
