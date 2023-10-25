@@ -1,8 +1,7 @@
-// Add the "use client" directive at the top of the file
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import './styles.css';
@@ -14,12 +13,12 @@ export default function Page() {
     password: "",
   });
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValue({ ...formValue, [name]: value });
   };
 
-  const onSubmit = async (e: React.FormEvent) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     try {
@@ -50,13 +49,10 @@ export default function Page() {
           else {
             console.error("Authentication failed");
           }
-          
         } else {
-
           console.error("Authentication failed");
         }
       } else {
-        
         console.error("Authentication failed");
       }
     } catch (error) {

@@ -11,38 +11,38 @@ export default function SignupPage() {
   });
   const [signupSuccess, setSignupSuccess] = useState(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event) => {
     const { name, value } = event.target;
     setFormValue({ ...formValue, [name]: value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch("/api/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formValue),
-    });
+    try {
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formValue),
+      });
 
-    if (response.ok) {
-      console.log("User created successfully");
-      setSignupSuccess(true);
-    } else {
-      const data = await response.json();
-      if (data.error === "Username is already in use") {
-        console.error("Username is already in use");
+      if (response.ok) {
+        console.log("User created successfully");
+        setSignupSuccess(true);
       } else {
-        console.error("User creation failed");
+        const data = await response.json();
+        if (data.error === "Username is already in use") {
+          console.error("Username is already in use");
+        } else {
+          console.error("User creation failed");
+        }
       }
+    } catch (error) {
+      console.error("Error during user creation:", error);
     }
-  } catch (error) {
-    console.error("Error during user creation:", error);
   }
-};
 
 
   return (
