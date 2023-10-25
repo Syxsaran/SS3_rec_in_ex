@@ -4,6 +4,13 @@
     color: rgba(var(--text-color));
   }
 
+.income-row {
+  background-color: lightgreen;
+}
+
+.expenses-row {
+  background-color: lightcoral;
+}
 
 input[type='text'],
 input[type='number'] {

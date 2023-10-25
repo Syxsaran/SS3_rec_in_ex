@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.js", "src/components/providers.js", "src/components/signinbutton.js", "src/app/page.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/layout.js", "src/components/providers.js", "src/components/signinbutton.js", "src/app/page.js", "src/app/main/page.js", "src/app/signup/page.js", "src/app/signout/page.js", "src/app/signout/page.js", "src/app/signin/page.js"],
   "exclude": ["node_modules"]
 }

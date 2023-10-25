@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
+import './styles.css';
 
 export default function SignupPage() {
   const [formValue, setFormValue] = useState({
@@ -47,9 +48,9 @@ export default function SignupPage() {
 
   return (
     <>
-      <h1>This is Signup Page</h1>
+      <h1 className="h1">This is Signup Page</h1>
       {signupSuccess ? (
-        <p>Signup successful! You can now sign in.</p>
+        <p className="p">Signup successful! You can now sign in.</p>
       ) : (
         <form onSubmit={handleSubmit}>
           <div>
@@ -79,12 +80,17 @@ export default function SignupPage() {
               onChange={handleChange}
             />
           </div>
-          <button className="btn btn-primary" type="submit">
-            Sign Up
-          </button>
-          <Link href="/signin">
-            <button className="btn btn-primary">Sign In</button>
-          </Link>
+
+          <div>
+            
+            <button className="btn btn-primary" type="submit">
+              Sign Up
+            </button>
+            <Link href="/signin">
+              <button className="btn btn-primary">Sign In</button>
+            </Link>
+          </div>
+
         </form>
       )}
     </>

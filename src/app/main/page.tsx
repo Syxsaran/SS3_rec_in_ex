@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -97,6 +97,36 @@ const Page = () => {
     setTransactions(updatedTransactions);
   };
 
+  const [currencies, setCurrencies] = useState([]);
+
+  useEffect(() => {
+    async function fetchCurrencies() {
+      try {
+        const response = await fetch('https://apicurrency.saransun.repl.co/currencys');
+        if (response.ok) {
+          const data = await response.json();
+          setCurrencies(data);
+        } else {
+          console.error('Failed to fetch currencies');
+        }
+      } catch (error) {
+        console.error('Error fetching currencies:', error);
+      }
+    }
+
+    fetchCurrencies();
+  }, []);
+
+  const tableRef = useRef(null);
+
+  const scrollToTable = () => {
+    if (tableRef.current) {
+      // ให้เลื่อนไปยังตาราง
+      tableRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+
   return (
     <div>
       <link
@@ -105,7 +135,17 @@ const Page = () => {
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
         crossOrigin="anonymous"
       ></link>
-      <h1>บันทึกรายรับและรายจ่าย</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>บันทึกรายรับและรายจ่าย</h1>
+        <button
+          style={{ marginLeft: 'auto' }}
+          type="button"
+          className="btn btn-dark"
+          onClick={scrollToTable}
+        >
+          อัตราการแลกเปลี่ยน
+        </button>
+      </div>
 
       <div>
         <h2>รายการ</h2>
@@ -179,6 +219,37 @@ const Page = () => {
           <h1><button className="btn btn-glow btn-gradient" onClick={updateTransaction}>บันทึก</button></h1>
         )}
       </div>
+
+      <div>
+        <h2 ref={tableRef}>อัตราการแลกเปลี่ยน</h2>
+        <div>
+          <table className="table table-dark table-striped-columns">
+
+            <thead>
+              <tr>
+                <th scope="col">ลำดับ</th>
+                <th scope="col">ประเทศ</th>
+                <th scope="col">รหัส</th>
+                <th scope="col">รับเข้า</th>
+                <th scope="col">ส่งออก</th>
+              </tr>
+            </thead>
+            <tbody>
+              {currencies.map((currency, index) => (
+                <tr key={currency.currencycode}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{currency.country}</td>
+                  <td>{currency.currencycode}</td>
+                  <td>{currency.import}</td>
+                  <td>{currency.export}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+    </div>
+
+
     </div>
   );
 };
