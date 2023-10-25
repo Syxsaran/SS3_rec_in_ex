@@ -6,11 +6,14 @@
   padding: 6rem;
   min-height: 100vh;
 }
-.text-gradient {
+.textgradient {
   background: linear-gradient(to right, #5330d0, #c43ad6);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  text-align: center;
+  font-size: 70px; /* เปลี่ยนขนาดตัวอักษรตามที่คุณต้องการ */
+  color: #333;
 }
 
 
